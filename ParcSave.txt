@@ -1,0 +1,4 @@
+Actuellement nous avons 3 voitures dans notre parc 
+Nous disposons de 1 voitures actuellement en location dont voici les matriculations
+Nous disposons de 1 voitures actuellement disponibles dont voici les matriculations
+Toutes nos voitures ont parcouru un kilometre moyen de 6584536981014131700000000000000.00 Km. 

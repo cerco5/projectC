@@ -3,6 +3,12 @@
 #include "structure.h"
 #include "prototype.h"
 
+//*******************************************************************
+//**     Fonction  : etat de notre parc                            **
+//**     Parametre : structures et le nombre de voitures           **
+//**	 Traitement: etat de parc                                  **
+//*******************************************************************
+
 void etatParc(Voiture *voit, int n){
     int i, l=0, nl=0;
     float kilo=0;
@@ -51,15 +57,11 @@ void etatParc(Voiture *voit, int n){
     fclose(f);
 }
 
-/*int save(){
-    FILE *f =NULL;
-
-    f= fopen("ParcSave.txt", "r");
-
-    if (f==NULL){
-        printf("Fichier introuvable");
-    }
-}*/
+//*******************************************************************
+//**     Fonction  : sauvegarde letat de notre parc                **
+//**     Parametre : structures et le nombre de voitures           **
+//**	 Traitement: sauvegarder letat de parc                     **
+//*******************************************************************
 
 void save(Voiture *voit, int n){
     FILE *f =NULL;
@@ -73,9 +75,6 @@ void save(Voiture *voit, int n){
 
         for ( i=0; i<n; i++){
                 fprintf(f, "Model %s \t Matricule %s \t Kilo %.2f Km \t Etat %c \n", voit[i].model,voit[i].mat,voit[i].kilo,voit[i].etat);
-                //printf( "Model %s \t Matricule %s \t Kilo %f \t Etat %s \n", voit[i].model,voit[i].mat,voit[i].kilo,voit[i].etat);
-                //fprintf(f, "Model %s \t Matricule %s \t Kilo %f \t Etat %s \n", voit[i].model,voit[i].mat,voit[i].kilo,voit[i].etat);
-
         }
 
     }

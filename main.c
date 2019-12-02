@@ -38,15 +38,22 @@ int main()
 	//**************************************************************
 
     //voitures = malloc(n1*sizeof(Voiture));
-    voitures = calloc(n1, sizeof(Voiture));
-    n=n1;
+    voitures = malloc(n1* sizeof(Voiture));
+
+    //**************************************************************
+	//****              Creation de voitures               *********
+	//**************************************************************
+
+    creer(voitures, n1);
+
+    //**************************************************************
+	//****              Ajouter de nouvelles voitures      *********
+	//**************************************************************
 
 
-
-
-   /* do{
+   do{
         printf("Voudrez vous enregistrer d'autres voitures? ");
-        scanf("%s", &res);
+        scanf("%c", &res);
     } while (res != 'o' && res != 'n');
 
     if (res=='o'){
@@ -54,22 +61,10 @@ int main()
         scanf("%d", &n2);
 
         n=n1+n2;
-        voitures= realloc(voitures, n*sizeof(Voiture));
-        creer(voitures, n2);
-        for (int i=0; i<n; i++){
-        printf("%s", voitures[i].mat);
+        voitures=realloc(voitures, n* sizeof(Voiture));
+        recreer(voitures, n1, n);
     }
-    } else {
-        n=n1;
-    }*/
 
-
-
-    //**************************************************************
-	//****              Creation de voitures               *********
-	//**************************************************************
-
-    creer(voitures, n);
     //**************************************************************
 	//****              Fin ou menu                        *********
 	//**************************************************************

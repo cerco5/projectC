@@ -3,6 +3,12 @@
 #include "structure.h"
 #include "prototype.h"
 
+//*******************************************************************
+//**     Fonction  : information sur toutes les voitures           **
+//**     Parametre : structures  le nombre de voitures             **
+//**	 Traitement: infos des voiture                             **
+//*******************************************************************
+
 void infosTtesVoitures(Voiture *voit, int n){
     int i;
 
@@ -10,35 +16,18 @@ void infosTtesVoitures(Voiture *voit, int n){
     printf("Matricules \t Etat \n");
     for (i=0; i<n; i++){
         if (voit[i].etat=='o'){
-            printf("%s \t Loue \n", voit[i].mat);
+            printf("%s \t %s \t Loue \n", voit[i].mat, voit[i].model);
         } else {
-            printf("%s \t Non loue \n", voit[i].mat);
-        }
-        //fprintf(f, "Model %s \t Matricule %s \t Kilo %f \t Etat %c \n", voit[i].model,voit[i].mat,voit[i].kilo,voit[i].etat);
-        //printf("Model %s Matricule %s Kilo %f \n", voit[i].model, voit[i].mat, voit[i].kilo);
-
-    }
-}
-
-void infosVoituresLocation(Voiture *voitures, int n){
-    int i;
-
-    printf("Matricules \t Etat: \n");
-    for (i=0; i<n; i++){
-        if (voitures[i].etat=='o'){
-            printf("%s \t A retourner \n", voitures[i].mat);
+            printf("%s \t %s \t Non loue \n", voit[i].mat, voit[i].model);
         }
     }
 }
 
-void infosVoituresModele(Voiture *voitures, int n){
-    int i;
-
-    printf("Matricules \t Modele: \n");
-    for (i=0; i<n; i++){
-        printf("%s \t %s \n", voitures[i].mat, voitures[i].model);
-    }
-}
+//*******************************************************************
+//**     Fonction  : fin du programme                              **
+//**     Parametre : structures  le nombre de voitures             **
+//**	 Traitement: fin ou menu du programme                      **
+//*******************************************************************
 
 void fin(Voiture *voitures, int n){
     char res;
@@ -55,13 +44,12 @@ void fin(Voiture *voitures, int n){
     }
 }
 
-//********************************************************
-//**	Fonction  : Menu					**
-//**	Parametre : Structure Voiture    				**
-//**	Traitement: Verifier si la liste de matricule   **
-//**                est vide ou pas                     **
-//**	Retourne  : 0 si la liste et vide et1 sinon     **
-//********************************************************
+//*******************************************************************
+//**     Fonction  : menu du programme                             **
+//**     Parametre : structures  le nombre de voitures             **
+//**	 Traitement: menu du programme                             **
+//*******************************************************************
+
 
 void menu(Voiture *voitures, int n){
     int n1;
@@ -76,21 +64,6 @@ void menu(Voiture *voitures, int n){
     printf("\t 4 : Etat du parc de voiture\n");
     printf("\t 5 : Sauvegarder l'etat du parc\n");
     printf("\t 0 : Fin du programme\n");
-
-   /* do {
-        printf("Veillez choisir un menu ");
-        scanf("%d", &n1);
-    } while (n1 < 0 || n1 > 5) ;
-
-    system("cls");
-    printf("Hello world!\n\n");
-    printf("-------------MENU-------------\n");
-    printf(" 1 : Louer une voiture\n");
-    printf(" 2 : Retour d'une voiture\n");
-    printf(" 3 : Etat d'une voiture\n");
-    printf(" 4 : Etat du parc de voiture\n");
-    printf(" 5 : Sauvegarder l'etat du parc\n");
-    printf(" 0 : Fin du programme\n");*/
 
     do {
         printf("Veuillez choisir un menu ");
@@ -113,7 +86,7 @@ void menu(Voiture *voitures, int n){
     case 2:
         printf("Cette Option vous permet de retourner une voiture \n");
 
-        infosVoituresLocation(voitures, n);
+        infosTtesVoitures(voitures, n);
 
         printf("Veuillez entrer le numero matricule de la voiture a retourner \n");
         scanf("%s", &matricule);
@@ -125,7 +98,7 @@ void menu(Voiture *voitures, int n){
     case 3:
         printf("Cette Option vous permet davoir des informations sur une voiture \n");
 
-        infosVoituresModele(voitures, n);
+        infosTtesVoitures(voitures, n);
 
         printf("Veuillez entrer le numero matricule de la voiture dont vous voulez les renseignements \n");
         scanf("%s", &matricule);
@@ -142,7 +115,7 @@ void menu(Voiture *voitures, int n){
 
     case 5:
         printf("Nous allons sauvegarder l'etat de votre parc dans un fichier appele ParcSave \n");
-        //save();
+
         etatParc(voitures, n);
         save(voitures, n);
         fin(voitures, n);
